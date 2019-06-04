@@ -1,0 +1,22 @@
+<div class="container">
+  <form #todoform="ngForm" (ngsubmit)="todoSubmit(todoForm);">
+    <div class="form-group">
+    <h1 class="text-center text-primary">Todo App</h1>
+      <div class="input-group-prepend">
+        <input type="text" #todo="" class="form-control" placeholder="Add Todo" autofocus="" name="todo" ngmodel="">
+        <span class="input-group-text" (click)="createTodo(todo.value)">
+          <i class="material-icons">add</i>
+        </span>
+      </div>
+    </div>
+    <div class="data">
+      <ul class="list-instyled">
+        <li *ngfor="let todo of todos | async">{{todo.title}}
+          <i (click)="deleteTodo(todo)" class="material-icons">delete</i>
+          <i (click)="updateTodo(todo)" class="material-icons">edit</i>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="button btn-danger" (click)="deleteAllTodos()">Delete All</button>
+  </form>
+</div>
